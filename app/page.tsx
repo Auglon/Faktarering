@@ -7,7 +7,6 @@ import ClassicTemplate from '@/components/templates/ClassicTemplate';
 import ModernTemplate from '@/components/templates/ModernTemplate';
 import MinimalTemplate from '@/components/templates/MinimalTemplate';
 import BoldTemplate from '@/components/templates/BoldTemplate';
-import { extractCompanyInfo } from './actions';
 
 const defaultData: InvoiceData = {
   invoiceNumber: "2026-03",
@@ -95,8 +94,35 @@ export default function InvoiceGenerator() {
       const domain = new URL(urlInput.startsWith('http') ? urlInput : `https://${urlInput}`).hostname;
       const logoUrl = `https://logo.clearbit.com/${domain}`;
       
-      // 2. Extract company info using Gemini
-      const info = await extractCompanyInfo(urlInput);
+      // 2. Extract company info using Gemini directly from client
+      const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+      if (!apiKey) throw new Error("API key not found");
+      
+      const { GoogleGenAI, Type } = await import('@google/genai');
+      const ai = new GoogleGenAI({ apiKey });
+      
+      const response = await ai.models.generateContent({
+        model: 'gemini-3-flash-preview',
+        contents: `Extract the company name, organization number (if available), address, and zip/city from this website: ${urlInput}. If you can't find them, return empty strings.`,
+        config: {
+          tools: [{ urlContext: {} }],
+          responseMimeType: 'application/json',
+          responseSchema: {
+            type: Type.OBJECT,
+            properties: {
+              name: { type: Type.STRING },
+              orgNr: { type: Type.STRING },
+              address: { type: Type.STRING },
+              zipCity: { type: Type.STRING },
+            }
+          }
+        }
+      });
+
+      let info = null;
+      if (response.text) {
+        info = JSON.parse(response.text);
+      }
       
       setData(prev => ({
         ...prev,
