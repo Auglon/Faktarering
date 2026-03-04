@@ -10,7 +10,7 @@ export async function extractCompanyInfo(url: string) {
     const ai = new GoogleGenAI({ apiKey });
     
     const response = await ai.models.generateContent({
-      model: 'gemini-3.1-flash-preview',
+      model: 'gemini-3-flash-preview',
       contents: `Extract the company name, organization number (if available), address, and zip/city from this website: ${url}. If you can't find them, return empty strings.`,
       config: {
         tools: [{ urlContext: {} }],
