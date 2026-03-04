@@ -1,0 +1,5 @@
+{
+  "name": "Faktura Generator",
+  "description": "Create and print professional Swedish invoices.",
+  "requestFramePermissions": []
+}
