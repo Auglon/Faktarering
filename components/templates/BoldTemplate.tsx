@@ -11,7 +11,7 @@ export default function BoldTemplate({ data }: { data: InvoiceData }) {
     <div className="bg-white shadow-xl print:shadow-none w-full max-w-[210mm] min-h-[297mm] relative flex flex-col text-slate-900 mx-auto font-sans overflow-hidden">
       {/* Header Banner */}
       <div 
-        className="p-[20mm] print:p-0 print:px-[20mm] print:pt-[20mm] flex flex-col justify-between items-start text-white"
+        className="p-[20mm] flex flex-col justify-between items-start text-white"
         style={{ backgroundColor: data.themeColor || '#1e293b' }}
       >
         <div className="flex justify-between w-full items-start mb-12">
@@ -42,7 +42,7 @@ export default function BoldTemplate({ data }: { data: InvoiceData }) {
         </div>
       </div>
 
-      <div className="p-[20mm] print:p-0 print:px-[20mm] print:py-[10mm] flex-1 flex flex-col">
+      <div className="p-[20mm] flex-1 flex flex-col">
         {/* Addresses */}
         <div className="grid grid-cols-2 gap-12 mb-16">
           <div>

@@ -11,7 +11,7 @@ export default function ModernTemplate({ data }: { data: InvoiceData }) {
     <div className="bg-white shadow-xl print:shadow-none w-full max-w-[210mm] min-h-[297mm] relative flex flex-col text-slate-800 mx-auto overflow-hidden">
       {/* Header Banner */}
       <div 
-        className="h-40 w-full p-[20mm] print:p-0 print:px-[20mm] print:pt-[20mm] flex justify-between items-start text-white"
+        className="h-40 w-full p-[20mm] flex justify-between items-start text-white"
         style={{ backgroundColor: data.themeColor || '#3b82f6' }}
       >
         <div>
@@ -27,7 +27,7 @@ export default function ModernTemplate({ data }: { data: InvoiceData }) {
         </div>
       </div>
 
-      <div className="p-[20mm] print:p-0 print:px-[20mm] print:py-[10mm] flex-1 flex flex-col">
+      <div className="p-[20mm] flex-1 flex flex-col">
         {/* Dates & Info */}
         <div className="flex justify-end gap-8 mb-12 text-sm">
           <div>

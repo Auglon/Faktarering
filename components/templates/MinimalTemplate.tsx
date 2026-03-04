@@ -8,7 +8,7 @@ export default function MinimalTemplate({ data }: { data: InvoiceData }) {
   const total = netto + moms;
 
   return (
-    <div className="bg-white shadow-xl print:shadow-none w-full max-w-[210mm] min-h-[297mm] p-[20mm] print:p-0 relative flex flex-col text-slate-900 mx-auto font-sans">
+    <div className="bg-white shadow-xl print:shadow-none w-full max-w-[210mm] min-h-[297mm] p-[20mm] relative flex flex-col text-slate-900 mx-auto font-sans">
       {/* Header */}
       <div className="flex justify-between items-end mb-16">
         <div>

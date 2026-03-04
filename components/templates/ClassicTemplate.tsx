@@ -8,7 +8,7 @@ export default function ClassicTemplate({ data }: { data: InvoiceData }) {
   const total = netto + moms;
 
   return (
-    <div className="bg-white shadow-xl print:shadow-none w-full max-w-[210mm] min-h-[297mm] p-[20mm] print:p-0 relative flex flex-col text-slate-900 mx-auto">
+    <div className="bg-white shadow-xl print:shadow-none w-full max-w-[210mm] min-h-[297mm] p-[20mm] relative flex flex-col text-slate-900 mx-auto">
       {/* Header */}
       <div className="flex justify-between items-start">
         <div>
